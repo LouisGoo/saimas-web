@@ -1,0 +1,31 @@
+#components-form-demo-normal-login .login-form {
+    max-width: 300px;
+  }
+  #components-form-demo-normal-login .login-form-forgot {
+    float: right;
+  }
+  #components-form-demo-normal-login .ant-col-rtl .login-form-forgot {
+    float: left;
+  }
+  #components-form-demo-normal-login .login-form-button {
+    width: 100%;
+  }
+
+  .login-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 3; /* 确保登录框在蒙版之上 */
+    text-align: center; /* 可选：如果你想让登录框的内容居中 */
+    border-radius: 5px;
+  }
+  
+  /* 可以添加一些额外的样式来美化登录框，例如 */
+  .login-box h2 {
+    margin-bottom: 20px;
+  }
