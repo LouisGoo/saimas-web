@@ -1,11 +1,19 @@
 import React from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input,message } from 'antd';
 import './login.scss';
+import { fetchLogin } from '@/store/modules/user';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+    const dispatch=useDispatch();
+    const navigate=useNavigate();
+  const onFinish = async (values) => {
+    console.log(values)
+    await dispatch(fetchLogin(values));
+    navigate('/');
+    message.success('登录成功');
   };
   return (
     <Form
@@ -17,7 +25,7 @@ const Login = () => {
       onFinish={onFinish}
     >
       <Form.Item
-        name="用户名"
+        name="username"
         rules={[
           {
             required: true,
@@ -25,10 +33,13 @@ const Login = () => {
           },
         ]}
       >
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+        <Input 
+            prefix={<UserOutlined className="site-form-item-icon" />} 
+            placeholder="用户名" 
+        />
       </Form.Item>
       <Form.Item
-        name="密码"
+        name="password"
         rules={[
           {
             required: true,
@@ -39,7 +50,7 @@ const Login = () => {
         <Input
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
-          placeholder="Password"
+          placeholder="密码"
         />
       </Form.Item>
       <Form.Item>

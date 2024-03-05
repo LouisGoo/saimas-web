@@ -1,9 +1,42 @@
 
 .carousel{
     margin-top:10px;
-    height: 100px;
-    width: 100%;
-  line-height: 160px;
-  text-align: center;
+    height: 600px;
+    width: 94%;
+    line-height: 160px;
+    text-align: center;
+    margin-left: 3%;
   
 }
+.div1{
+    background-image: url(../../../assets/ustc1.jpg);
+}
+
+.zeroContent{
+    background:#1677ff;
+}
+.content0{
+    background: url("../../../../public/pcImg.png");
+}
+.content1{
+    background: url(../../../assets/ustc1.jpg);
+    
+}
+.content2{
+    background: url(../../../assets/ustc2.jpg);
+}
+.content3{
+    background: url(../../../assets/ustc3.jpg);
+}
+.content4{
+    background: url(../../../assets/ustc4.png);
+}
+.cstyle{
+
+    height: 600px;
+    color: #fff;
+    line-height: 160px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

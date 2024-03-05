@@ -16,8 +16,8 @@ const items = [
     // disabled: true,
   },
   {
-    label: '专业大全',
-    key: '/major',
+    label: '信息汇总',
+    key: '/information',
     icon: <AppstoreOutlined />,
     // disabled: true,
   },
@@ -28,7 +28,7 @@ const items = [
     // disabled: true,
   },
   {
-    label: '签证政策',
+    label: '留学申请',
     key: '/visa',
     icon: <SolutionOutlined />,
     // disabled: true,

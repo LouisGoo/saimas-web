@@ -5,23 +5,25 @@ import ustc2 from '@/assets/ustc2.jpg'
 import ustc3 from '@/assets/ustc3.jpg'
 import ustc4 from '@/assets/ustc4.png'
 import './imgs.scss'
+import classNames from 'classnames';
 
-const Imgs=()=>{
-    return (
-<Carousel autoplay dotPosition='bottom' className='carousel'>
-    <div style={{backgroundImage:ustc1}}>
-      {/* <img src={ustc1}/> */}
-    </div >
-    <div style={{backgroundImage:ustc2}}>
-        {/* <img src={ustc2}/>  */}
+const Imgs= () => (
+  <Carousel autoplay dotPosition='bottom' className='carousel'>
+    <div className='zeroContent'>
+      <div className={classNames("cstyle", "content0")}></div>
     </div>
-    <div style={{backgroundImage:ustc3}}>
-        {/* <img src={ustc3}/>   */}
+    <div>
+      <div className={classNames("cstyle", "content1")}></div>
     </div>
-    <div style={{backgroundImage:ustc4}}>
-        {/* <img src={ustc4}/>  */}
+    <div>
+      <div className={classNames("cstyle", "content2")}></div>
+    </div>
+    <div>
+      <div className={classNames("cstyle", "content3")}></div>
+    </div>
+    <div>
+      <div className={classNames("cstyle", "content4")}></div>
     </div>
   </Carousel>
-    )
-}
+);
 export default Imgs;

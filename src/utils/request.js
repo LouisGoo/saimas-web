@@ -3,7 +3,7 @@ import { getToken, removeToken } from "./token";
 import router from "@/router";
 
 const request=axios.create({
-    baseURL:'http://127.0.0.1:4523',
+    baseURL:'http://127.0.0.1:2000',
     timeout:5000
 })
 

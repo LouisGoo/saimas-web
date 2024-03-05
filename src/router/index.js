@@ -4,9 +4,9 @@ import { createBrowserRouter } from "react-router-dom"
 import SaimasLayout from "@/pages/Layout";
 import Home from "@/pages/Home";
 import School from "@/pages/School";
-import Major from "@/pages/Major";
 import Talk from "@/pages/Talk";
 import Visa from "@/pages/Visa";
+import Information from "@/pages/Information";
 
 
 const router =createBrowserRouter([
@@ -23,8 +23,8 @@ const router =createBrowserRouter([
                 element:<School/>
             },
             {
-                path:'major',
-                element:<Major/>
+                path:'information',
+                element:<Information/>
             },
             {
                 path:'talk',
