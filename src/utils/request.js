@@ -3,7 +3,7 @@ import { getToken, removeToken } from "./token";
 import router from "@/router";
 
 const request=axios.create({
-    baseURL:'http://127.0.0.1:2000',
+    baseURL:'https://mock.apifox.com/m2/4037335-0-default/',
     timeout:5000
 })
 

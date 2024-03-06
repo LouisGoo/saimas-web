@@ -5,6 +5,7 @@ import './login.scss';
 import { fetchLogin } from '@/store/modules/user';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { setCloseLogin } from '@/store/modules/uiData';
 
 const Login = () => {
     const dispatch=useDispatch();
@@ -12,8 +13,8 @@ const Login = () => {
   const onFinish = async (values) => {
     console.log(values)
     await dispatch(fetchLogin(values));
-    navigate('/');
     message.success('登录成功');
+    dispatch(setCloseLogin())
   };
   return (
     <Form

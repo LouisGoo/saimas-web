@@ -33,6 +33,7 @@ const userReducer=userStore.reducer;
 const fetchLogin=(loginForm)=>{
     return async (dispatch)=>{
         const res=await loginAPI(loginForm);
+        // console.log(res);
         dispatch(setToken(res.data.token));
 
     }

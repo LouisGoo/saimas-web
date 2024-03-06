@@ -1,79 +1,77 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, Button, List, Skeleton } from 'antd';
+import { Avatar, Button, List, Skeleton,Card,Pagination, Radio, Space } from 'antd';
 import './index.scss';
-const data=[
-    {
-    title: '麻省理工学院',
-    src:"https://www.qschina.cn/sites/default/files/massachusetts-institute-of-technology-mit_410_small.jpg",
-    description:"United States",
-    href:"https://www.qschina.cn/universities/massachusetts-institute-technology-mit"
-    },
-    {
-    title: '剑桥大学',
-    src:'https://www.qschina.cn/sites/default/files/university-of-cambridge_95_small.jpg',
-    description:"United Kingdom",
-    href:'https://www.qschina.cn/universities/university-cambridge'
-    },
-    {
-    title: '牛津大学',
-    src:'https://www.qschina.cn/sites/default/files/university-of-oxford_478_small.jpg',
-    description:"United Kingdom",
-    href:"https://www.qschina.cn/universities/university-oxford"
-    },
-    {
-    title: '哈佛大学',
-    src:'https://www.qschina.cn/sites/default/files/harvard-university_253_small.jpg',
-    description:"United States",
-    href:"https://www.qschina.cn/universities/harvard-university"
-    },
-    {
-    title:"斯坦福大学",
-    src:'https://www.qschina.cn/sites/default/files/stanford-university_573_small.jpg',
-    description:"United States",
-    href:"https://www.qschina.cn/universities/stanford-university"
-    },
-    {
-    title:"帝国理工学院",
-    src:'https://www.qschina.cn/sites/default/files/imperial-college-london_592560cf2aeae70239af4be8_small.jpg',
-    description:"United Kingdom",
-    href:"https://www.qschina.cn/universities/imperial-college-london",
-    },
-    {
-    title:"苏黎世联邦理工大学（瑞士联邦理工学院）",
-    src:'https://www.qschina.cn/sites/default/files/eth-zurich-swiss-federal-institute-of-technology_201_small.jpg',
-    description:"Switzerland",
-    href:"https://www.qschina.cn/universities/eth-zurich-swiss-federal-institute-technology"
-    },
-    {
-    title:"新加坡国立大学",
-    src:'https://www.qschina.cn/sites/default/files/national-university-of-singapore-nus_443_small.jpg',
-    description:"Singapore",
-    href:"https://www.qschina.cn/universities/national-university-singapore-nus"
-    },
-    {
-    title:"伦敦大学学院",
-    src:'https://www.qschina.cn/sites/default/files/ucl_592560cf2aeae70239af4bf1_small.jpg',
-    description:"United Kingdom",
-    href:"https://www.qschina.cn/universities/ucl"
-    },
-]
+import { getSchoolListAPI } from '@/apis/school';
+
 const School = () => {
-  
-  return (
-    <List
-        itemLayout='horizontal'
-        dataSource={data}
-        renderItem={(item,index)=>(
+    const [schoolList,setSchoolList] =useState([]);
+    const [reqData,setReqData]=useState({
+        page:1,
+        limit:10,
+        sidx:"qsrank",
+        order:"asc",
+        key:''
+    })
+    useEffect(()=>{
+        const getSchoolList=async (reqData)=>{
+            const res= await getSchoolListAPI(reqData);
+            // console.log(res);
+            setSchoolList(res.data.list);
+            // console.log(schoolList)
+        }
+        getSchoolList();
+
+    },[reqData])
+
+    return (
+      <>
+        <Card
+            title={(
+                <div>
+                    <span className='title'>大学</span>
+                    <span className='title1'>QS排名</span>
+                    <span className='title2'>软科排名</span>
+                    <span className='title2'>综合评分</span>
+                </div>
+            )}
+            
+            extra={<a href="#">More</a>}
+            // style={{
+            //     width: 300,
+            // }}
+            >
+            
+            <List
+          pagination={{
+            position:"bottom",
+            align:"center"
+          }}
+          itemLayout='horizontal'
+          dataSource={schoolList}
+          renderItem={(item, index) => (
             <List.Item className='list'>
                 <List.Item.Meta
-                    avatar={<Avatar src={item.src}/>}
-                    title={<a href={item.href}>{item.title}</a>}
-                    description={item.description}
+                    avatar={<Avatar src={item.logoUrl}/>}
+                    title={<a href={item.siteUrl}>{item.collegeName}</a>}
+                    description={item.region}
                 />
+                <div className='content'>
+                    {item.qsrank}
+                </div>
+                <div className='content'>
+                    {item.rkrank}
+                </div>
+                <div className='content'>
+                    {item.avgScore}
+                </div>
+                
             </List.Item>
-        )}
-    />
+          )}
+        />
 
-  );
-};
-export default School;
+        </Card>
+        
+      </>
+    );
+  };
+  export default School;

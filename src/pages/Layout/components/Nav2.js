@@ -3,6 +3,7 @@ import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/ico
 import { Menu } from 'antd';
 import { BankOutlined ,SolutionOutlined,HomeOutlined,TeamOutlined} from '@ant-design/icons';
 import './nav2.scss'
+import { useLocation } from 'react-router-dom';
 const items = [
   {
     label: '首页',
@@ -36,7 +37,8 @@ const items = [
 ];
 
 const Nav2 = ({changePath}) => {
-  const [current, setCurrent] = useState('/');
+  const location=useLocation();
+  const [current, setCurrent] = useState(location.pathname);
   const onClick = (e) => {
     //console.log('click ', e);
     setCurrent(e.key);

@@ -6,7 +6,7 @@ myHeaders.append("User-Agent", "Apifox/1.0.0 (https://apifox.com)");
 
 export function loginAPI(formData){
     return request({
-        url:'/user/login',
+        url:'/148591070',
         method:"POST",
         data:formData
     })
@@ -19,7 +19,7 @@ export function registAPI(formData){
         data:formData
     })
 }
-
+ 
 
 export function getProfileAPI(){
     return request({

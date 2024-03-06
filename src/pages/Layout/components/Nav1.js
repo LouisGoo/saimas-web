@@ -1,20 +1,33 @@
 import './nav1.scss'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AudioOutlined } from '@ant-design/icons';
-import { Input, Layout ,Image, Button} from 'antd';
+import { Input, Layout ,Image, Button, message} from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { setOpenLogin } from '@/store/modules/uiData';
+import { clearUserInfo } from '@/store/modules/user';
 
 const { Search } = Input;
 
 const Nav1=()=>{
     const onSearch = (value, _e, info) => console.log(info?.source, value);
     const openLogin=useSelector(state=>state.uiData.openLogin);
-    const [buttonText,setButtonText]=useState('登录/注册');
+    const token=useSelector(state=>state.user.token);
+    const [buttonText,setButtonText]=useState('');
+    useEffect(()=>{
+        if(token){
+            setButtonText('退出')
+        }else{
+            setButtonText("登录/注册")
+        }
+    },[token])
+    
     const dispatch=useDispatch();
     const onClick=()=>{
         // setButtonText("退出")
-        dispatch(setOpenLogin());
+        if(token){
+            dispatch(clearUserInfo());
+            message.warning("已退出登录");
+        }else   dispatch(setOpenLogin());
 
     }
 
